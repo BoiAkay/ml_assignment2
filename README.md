@@ -42,18 +42,18 @@ Below are the key insights regarding how each model handled the dataset:
 ## 5. Project Structure
 ```text
 project-folder/
-├── dry_bean_app.py          # Streamlit Application (Frontend)
-├── model_traning.py         # Training Pipeline (Backend)
-├── requirements.txt         # Project Dependencies
-├── README.md                # Project Documentation
-├── model_evaluation_results.csv # Generated Metrics
-└── model/                   # Serialized Model Files
-    ├── logistic_regression.pkl
-    ├── decision_tree.pkl
-    ├── knn_classifier.pkl
-    ├── naive_bayes.pkl
-    ├── random_forest.pkl
-    └── xgboost.pkl
+├── streamlit_app.py           # Streamlit Application (Frontend)
+├── model_traning.py           # Training Pipeline (Backend)
+├── requirements.txt           # Project Dependencies
+├── README.md                  # Project Documentation
+├── bean_model_performance.csv # Generated Metrics
+└── model/                     # Serialized Model Files
+    ├── log_reg.pkl
+    ├── dt_clf.pkl
+    ├── knn.pkl
+    ├── gnb.pkl
+    ├── rf_clf.pkl
+    └── xgb.pkl
 ```
 ## 6 Live Application
 You can access the deployed Streamlit application to test the model predictions in real-time here: https://mlassignment2-pmocu6xldue9pwadnqlgmu.streamlit.app/
