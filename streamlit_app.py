@@ -116,6 +116,34 @@ if app_mode == "Classification Tool":
 
     with left_col:
         st.subheader("1. Input Data")
+        
+        # --- NEW SECTION: Download Sample Data from GitHub ---
+        with st.expander("Need sample data?"):
+            st.markdown("Download the test dataset directly from the repository:")
+            try:
+                # Using the RAW URL to fetch the CSV content
+                GITHUB_RAW_URL = "https://raw.githubusercontent.com/BoiAkay/ml_assignment2/main/test_data_scaled.csv"
+                
+                # We cache the data loading to prevent re-fetching on every interaction
+                @st.cache_data
+                def load_sample_data(url):
+                    return pd.read_csv(url)
+
+                df_sample = load_sample_data(GITHUB_RAW_URL)
+                csv_sample = df_sample.to_csv(index=False).encode('utf-8')
+
+                st.download_button(
+                    label="📥 Download test_data_scaled.csv",
+                    data=csv_sample,
+                    file_name="test_data_scaled.csv",
+                    mime="text/csv",
+                    help="Click to download the sample test file from GitHub."
+                )
+            except Exception as e:
+                st.error(f"Could not fetch sample from GitHub. Please check internet connection.")
+                st.markdown(f"[View on GitHub]({GITHUB_RAW_URL})")
+        # -----------------------------------------------------
+
         st.info("Upload `test_data_scaled.csv` containing feature columns.")
         data_file = st.file_uploader("Drop CSV Here", type=["csv"])
 
@@ -165,15 +193,14 @@ if app_mode == "Classification Tool":
                         st.markdown("### Performance Metrics")
                         scores = compute_metrics(active_model, X_in, y_true)
                         
-                        # --- UPDATED SECTION: 6 Columns to include Recall ---
+                        # 6 Columns to include Recall
                         c1, c2, c3, c4, c5, c6 = st.columns(6)
                         c1.metric("Accuracy", f"{scores['Accuracy']:.3f}")
                         c2.metric("AUC", f"{scores['AUC']:.3f}")
                         c3.metric("F1-Score", f"{scores['F1']:.3f}")
                         c4.metric("Precision", f"{scores['Precision']:.3f}")
-                        c5.metric("Recall", f"{scores['Recall']:.3f}")  # <--- Added Recall
+                        c5.metric("Recall", f"{scores['Recall']:.3f}")
                         c6.metric("MCC", f"{scores['MCC']:.3f}")
-                        # -------------------------------------------------
                         
                         # Confusion Matrix
                         st.write("#### Confusion Matrix Heatmap")
