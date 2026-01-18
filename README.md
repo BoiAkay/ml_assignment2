@@ -56,4 +56,4 @@ project-folder/
     └── xgb.pkl
 ```
 ## 6 Live Application
-You can access the deployed Streamlit application to test the model predictions in real-time here: https://mlassignment2-pmocu6xldue9pwadnqlgmu.streamlit.app/
+You can access the deployed Streamlit application to test the model predictions in real-time here: <a href="https://mlassignment2-pmocu6xldue9pwadnqlgmu.streamlit.app/" target="_blank">Live Streamlit App</a>
