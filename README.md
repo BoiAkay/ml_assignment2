@@ -54,3 +54,6 @@ project-folder/
     ├── naive_bayes.pkl
     ├── random_forest.pkl
     └── xgboost.pkl
+```
+## 6 Live Application
+You can access the deployed Streamlit application to test the model predictions in real-time here: https://mlassignment2-pmocu6xldue9pwadnqlgmu.streamlit.app/
